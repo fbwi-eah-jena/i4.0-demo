@@ -1,0 +1,11 @@
+Transportservice
+
+Dieser Service benötigt eine Verbindung zu MongoDB und einem Broker, um zu funktionieren.
+
+MongoDB: TransportDB/tsdatalist
+Broker: workflow/claim/#
+
+Aktuell kann der Service über localhost:3002 aufgerufen werden. 
+
+Nach dem Herunterladen der Dateien muss noch ein npm install ausgeführt werden, um die erforderlichen node_modules zusätzlich 
+herunterzuladen.
