@@ -4,4 +4,4 @@
 
 
 
-Informationen zum Einstieg in GitHub befinden sich im Wiki.
+Informationen zum Einstieg in GitHub befinden sich im Wiki, das über die obere Leiste erreicht werden kann.
