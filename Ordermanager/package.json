@@ -1,0 +1,11 @@
+{
+  "name": "app-ordermanager",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/server.js"
+  },
+  "dependencies": {
+    "mqtt": "~2.13.0"
+  }
+}

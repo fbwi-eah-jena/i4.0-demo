@@ -1,0 +1,36 @@
+{
+    "processId" : "simple_cocktail_production",
+    "taskComponentMappings" :
+    [
+        {
+            "taskId" : "Juice",
+            "components" : 
+            [
+                {"id" : "1"}
+            ]
+        },
+        {
+            "taskId" : "Puree",
+            "components" : 
+            [
+                {"id" : "2"}
+            ]
+        },
+		{
+            "taskId" : "Pieces",
+            "components" : 
+            [
+                {"id" : "3"}
+            ]
+        },
+		{
+            "taskId" : "Hand over",
+            "components" : 
+            [
+                {"id" : "1"},
+				{"id" : "2"},
+				{"id" : "3"}
+            ]
+        }
+    ]
+}

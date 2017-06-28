@@ -1,0 +1,14 @@
+{
+	"mqttbroker": "mqtt:localhost",
+    "tools":
+    [
+		{
+            "name":"clock",
+            "url":"http://localhost:8017"
+        },
+		{
+            "name":"scale",
+            "url":"http://192.168.43.245:8017"
+        }
+    ]
+}

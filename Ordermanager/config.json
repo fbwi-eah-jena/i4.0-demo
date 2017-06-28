@@ -1,0 +1,10 @@
+{
+	"mqttbroker": "mqtt:localhost",
+    "orderdb" :
+    {
+        "host" : "localhost",
+        "user" : "root",
+        "password" : "",
+        "db" : "i40_orders"
+    }
+}

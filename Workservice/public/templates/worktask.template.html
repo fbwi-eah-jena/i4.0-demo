@@ -1,0 +1,60 @@
+<p>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+             <div class="panel-heading">
+                 <div class="row">
+                   <div class="col-sm-6">
+                      <h3>
+                            #{TASK_NAME}
+                      </h3>
+                   </div>
+                   <div class="col-sm-6"><button class="btn btn-success btn-md pull-right" onClick="completeTask('#{TASK_ID}')"> <span aria-hidden="true" class="glyphicon glyphicon-ok"></span> Done</button></div>
+                </div>
+             </div>
+             <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td width="40%">Product ID:</td> 
+                        <td>#{PRODUCT_ID}</td> 
+                    </tr>
+                    <tr>
+                        <td>Task available since:</td> 
+                        <td>#{TASK_TIME}</td> 
+                    </tr>
+                    #{TASK_COMPONENTS}
+                 </table>
+                 <p>
+                    <b>Description:</b><br/>
+                     #{TASK_DESCRIPTION}
+                 </p>
+                 <p>
+                    <b>Image</b><br/>
+                    <div class="thumbnail">
+                        <img src="http://dailyroabox.com/wp-content/uploads/2015/06/9Strawberries-reduce-inflammation-1024x576.jpg">
+                    </div>
+                 </p>
+                 <p>
+                     <b>Video</b><br/>
+                     <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mYfg7TwjmG4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                 </p>
+              </div>
+           </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+             <div class="panel-heading">
+                  <h3>
+                        Live process data
+                  </h3>
+             </div>
+             <div class="panel-body" id="process_data">
+                    #{PROCESS_DATA_LIST}
+              </div>
+           </div>
+        </div>
+    </div>
+</p>

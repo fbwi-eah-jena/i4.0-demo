@@ -1,0 +1,24 @@
+<p>
+    <div class="panel-group">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <div class="row">
+               <div class="col-sm-6">
+                  <h4 class="panel-title">
+                     <a data-toggle="collapse" href="#collapse_#{TASKGROUP_TYPE}_#{TASKGROUP_ID}">
+                        #{TASKGROUP_NAME}
+                        <div class="badge">#{TASKGROUP_SIZE}</div>
+                     </a>
+                  </h4>
+               </div>
+               <div class="col-sm-6"><button id="#{TASKGROUP_ACTION}_button_#{TASKGROUP_ID}" class="btn btn-primary btn-sm pull-right process-button" onClick="#{TASKGROUP_ACTION}('#{TASKGROUP_ID}')"> <span aria-hidden="true" class="glyphicon glyphicon-#{TASKGROUP_PROCESS_ICON}"></span> #{TASKGROUP_ACTION_NAME}</button></div>
+            </div>
+         </div>
+         <div id="collapse_#{TASKGROUP_TYPE}_#{TASKGROUP_ID}" class="panel-collapse">
+            <div #{TASK_LIST_MULTI_SELECT} class="list-group">
+                #{TASKS_LIST}
+            </div>
+          </div>
+       </div>
+    </div>
+</p>

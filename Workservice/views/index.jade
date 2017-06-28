@@ -1,0 +1,41 @@
+extends layout
+
+block content
+    .container
+        header.header
+            .row
+                .col-sm-8
+                   h1(id='userId') USERNAME
+                .col-sm-4.text-right
+                    a(href='/logout')
+                        span.glyphicon.glyphicon-log-out(aria-hidden='true') 
+                        |   Logout
+            
+        .container
+        nav
+            ul.nav.nav-justified
+                li.nav-item
+                    a.nav-link.active(id='nav_all_tasks' href='#all_tasks') All Tasks 
+                        .badge(id='all_tasks_badge') 0
+                li.nav-item
+                    a.nav-link(id='nav_my_tasks' href='#my_tasks') My Tasks 
+                        .badge(id='my_tasks_badge') 0
+                li.nav-item
+                    a.nav-link(id='nav_work_tasks' href='#work_tasks') Work 
+                        .badge(id='work_tasks_badge') 0
+        //main part
+        p
+        div(id='all_tasks')
+        div(id='my_tasks' style='display:none') my tasks
+        div(id='work_tasks' style='display:none') work tasks
+
+        // Site footer
+        footer.footer
+            p © EAH Jena 2016
+    script(src='javascripts/jquery.min.js')
+    script(src='javascripts/bootstrap.min.js')
+    script(src='javascripts/listgroup.js')
+    script(src='javascripts/my.js')
+    script(src='javascripts/sensordata.js')
+    script(src='/socket.io/socket.io.js')
+

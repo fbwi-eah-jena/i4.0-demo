@@ -1,0 +1,21 @@
+{
+    "processId" : "cocktail_production",
+    "taskComponentMappings" :
+    [
+        {
+            "taskId" : "Prepare cup task",
+            "components" : 
+            [
+                {"id" : "1"},
+                {"id" : "2"}
+            ]
+        },
+        {
+            "taskId" : "fillInPieces",
+            "components" : 
+            [
+                {"id" : "2"}
+            ]
+        }
+    ]
+}

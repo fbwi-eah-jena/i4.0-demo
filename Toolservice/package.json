@@ -1,0 +1,8 @@
+{
+	"name": "app_toolservice",
+	"description": "External Tool Service",
+	"author": "nbrehm",
+	"dependencies" : {
+		"socket.io": "*"
+	}
+}
