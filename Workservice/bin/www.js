@@ -52,6 +52,7 @@ ios.sockets.on('connection', function (socket) {
     //register connection
     var client = usermanager.registerConnection(socket);
     socket.emit('userid', userName);//send username to client
+    socket.emit('workingstation', conf.workingstation);//send workingstation name to client
     
     socket.on('register', function (userName) {
 		// user to be assigned to the current connection
@@ -60,16 +61,21 @@ ios.sockets.on('connection', function (socket) {
         //send fresh tasklists
         mqttClient.publish("workflow/refresh/tasklist/user/"+userName,"");//post empty message
         mqttClient.publish("workflow/refresh/mytasklist/user/"+userName,"");//post empty message
+        /*
         setInterval(function(){
             console.log("refreshing tasklist for user '"+userName+"'");
             mqttClient.publish("workflow/refresh/tasklist/user/"+userName,"");//post empty message
         }, 60000);//refresh after every 60 secs.
+        */
 	});
     socket.on('claim', function (data) {
 		// user is claiming a list of tasks
         
 		console.log('client for '+client.user.userName+' is claiming list of tasks... forwarding message to event broker');
         mqttClient.publish("workflow/claim/user/"+client.user.userName,data);
+        //refresh List
+        mqttClient.publish("workflow/refresh/tasklist/user/"+userName,"");//post empty message
+        mqttClient.publish("workflow/refresh/mytasklist/user/"+userName,"");//post empty message
 	});
     socket.on('do', function (data) {
 		// user is doing a list of tasks
@@ -87,6 +93,9 @@ ios.sockets.on('connection', function (socket) {
         let completionData = "{'taskdata':"+data+", 'sensordata':"+JSON.stringify(toolmanager.getSummary())+"}";
         console.log("completion data: "+completionData);            
         mqttClient.publish("tools/complete/user/"+client.user.userName,completionData);
+        //refresh
+        mqttClient.publish("workflow/refresh/tasklist/user/"+userName,"");//post empty message
+        mqttClient.publish("workflow/refresh/mytasklist/user/"+userName,"");//post empty message
 	});
     socket.on('disconnect', function () {
         console.log('client is disconnected...');

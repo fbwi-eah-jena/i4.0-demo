@@ -9,6 +9,7 @@ var workTaskComponentTemplateHTML = "";
 var currentMyTaskList = null;
 var socket;
 var userId = null;
+var workingstation = null;
 
 $(document).ready(function(){
     
@@ -52,6 +53,11 @@ $(document).ready(function(){
                 console.log('registering userId '+userId);
                 $("#userId").html(userId);//display userid
                 socket.emit("register", userId);
+                
+                socket.on('workingstation', function (data) {
+                    console.log("received workingstation name from server: '"+data+"'");
+                   workingstation = data;
+                });
                 
                 // register user-related events
                 socket.on('workflow/tasklist/user/'+userId, function (data) {
@@ -208,16 +214,20 @@ function claimTasks(taskGroupId)
     //get selected tasks from html-list conteainer
     var taskArray = new Array();
     $.each($(".active.task_group_all_tasks_"+taskGroupId), function(key, element){
-        var taskNameArray = element.id.split("_");
-        var thisTaskId = taskNameArray[taskNameArray.length-1];
-        console.log(thisTaskId);
-        taskArray.push(thisTaskId);
+        //id has the structure... "taskid_53525_pid_4711" (means four elements)
+        var taskDataArray = element.id.split("_");
+        var thisTaskId = taskDataArray[1];
+        var thisProductId = taskDataArray[3];
+        console.log("task to be claimed: "+thisTaskId+" productID: "+thisProductId+ " workingstation: "+workingstation);
+        let thisTaskObject = {id: thisTaskId, productId: thisProductId, workingstation: workingstation};
+        taskArray.push(thisTaskObject);
     });
     //send claim message to server
     if(taskArray.length>0)
     {
-        console.log("sending tasklist to server");
-        socket.emit("claim",JSON.stringify(taskArray));
+        console.log("sending tasklist to server... "+JSON.stringify(taskArray));
+        let claimedTasksObject = {claimedtasks: taskArray};
+        socket.emit("claim",JSON.stringify(claimedTasksObject));
         //socket.emit("claim","{\"task_id\",\"workingstation\" : 19,\"productId\": \"44\"}");
     }
 }
@@ -230,7 +240,7 @@ function doTasks(taskGroupId)
     var taskArray = new Array();
     $.each($(".active.task_group_my_tasks_"+taskGroupId), function(key, element){
         var taskNameArray = element.id.split("_");
-        var thisTaskId = taskNameArray[taskNameArray.length-1];
+        var thisTaskId = taskNameArray[1];
         console.log(thisTaskId);
         taskArray.push(thisTaskId);
     });
