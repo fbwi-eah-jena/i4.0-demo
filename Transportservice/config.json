@@ -1,0 +1,5 @@
+{
+	"port" : 3002,
+	"mqttbroker": "mqtt:localhost",
+	"db" : "localhost:27017/TransportDB"
+}
