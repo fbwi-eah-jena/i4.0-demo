@@ -1,0 +1,15 @@
+<configuration status="WARN">
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+		</Console>
+	</appenders>
+	<loggers>
+		<logger name="de.eahjena.wi" level="DEBUG" additivity="false">
+			<appender-ref ref="Console"/>
+		</logger>
+		<root level="error">
+			<appender-ref ref="Console"/>
+		</root>
+	</loggers>
+</configuration>

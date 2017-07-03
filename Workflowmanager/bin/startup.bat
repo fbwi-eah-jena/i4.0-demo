@@ -1,0 +1,1 @@
+start java -cp ".;..;workflowmanager.jar" de.eahjena.wi.workflowmanager.App
