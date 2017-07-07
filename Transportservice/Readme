@@ -2,11 +2,11 @@ Transportservice
 
 This service is built using Node.js. It needs a connection to MongoDB and a broker to work properly.
 
-**MongoDB:** 
+MongoDB:
 Database: TransportDB
 Collection: tsdatalist
 
-**Broker:** 
+Broker:
 Subscription to workflow/claim/#
 
 Currently, the service can be accessed with localhost:3002.
