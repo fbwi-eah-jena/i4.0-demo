@@ -1,10 +1,14 @@
 Transportservice
 
-Dieser Service benötigt eine Verbindung zu MongoDB und einem Broker, um zu funktionieren.
+This service is built using Node.js. It needs a connection to MongoDB and a broker to work properly.
 
-MongoDB: TransportDB/tsdatalist
-Broker: workflow/claim/#
+**MongoDB:** 
+Database: TransportDB
+Collection: tsdatalist
 
-Aktuell kann der Service über localhost:3002 aufgerufen werden. 
+**Broker:** 
+Subscription to workflow/claim/#
 
-Nach dem Herunterladen der Dateien muss noch ein npm install ausgeführt werden, um die erforderlichen node_modules zusätzlich herunterzuladen. 
+Currently, the service can be accessed with localhost:3002.
+
+After downloading these files, you will need to do a npm install to download all necessary node_modules. 
