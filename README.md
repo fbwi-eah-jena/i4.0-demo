@@ -10,5 +10,5 @@ Should you upload something in this project, like a microservice, please include
 
 Informationen zum Einstieg in GitHub und über das Projekt befinden sich im Wiki, das über die obere Leiste erreicht werden kann.
 
-## Hinweis:
-Bitte die Dokumentationen der Services in Englisch in den Readme-Dateien vornehmen. Dabei sollte mithilfe dieser Readme-Datei ein Aussenstehender in der Lage sein, den jeweiligen Service erfolgreich zu starten.
+# Hinweis:
+Bitte die Dokumentationen der Services in **Englisch** in den Readme-Dateien vornehmen. Dabei sollte mithilfe dieser Readme-Datei ein Aussenstehender in der Lage sein, den jeweiligen Service erfolgreich zu starten.
