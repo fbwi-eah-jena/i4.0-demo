@@ -67,7 +67,7 @@ client.on('connect', () => {
 //write task objects to db
 client.on('message', (topic, message) => {  
     console.log("reveived a new message: "+message.toString());
-	//expected message srtucture: (claimedtasks: [{"id":"657373", "workingstation":"65747", "productId":"27"}],{...},{...})
+	//expected message structure: (claimedtasks: [{"id":"657373", "workingstation":"65747", "productId":"27"}],{...},{...})
 	var newMessage = JSON.parse(message);
 	for(thisTask of newMessage.claimedtasks)
 	{
