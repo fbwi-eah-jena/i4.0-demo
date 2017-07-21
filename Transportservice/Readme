@@ -8,6 +8,7 @@ Collection: tsdatalist
 
 Broker:
 Subscription to workflow/claim/#
+It displays the variables "productId" and "workingstation".
 
 Currently, the service can be accessed with localhost:3002.
 
