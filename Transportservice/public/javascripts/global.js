@@ -6,17 +6,13 @@ $(document).ready(function() {
 	populateTable();
 	
 	
-	//bei Tabellen in Tabs:
-	//document.getElementById("defaultOpen").click();
-	
-	
-	//Tabelle aktualisieren
+	//update table
 	setInterval( function () {
 		populateTable();  
 	}, 10000 );
 	
 
-    // Löschen/Erledigt
+    // delete ("Done")
     $('#Transportlist table tbody').on('click', 'td a.linkdelete', deleteInfo);
 	
 });
@@ -35,19 +31,18 @@ function populateTable() {
         $.each(data, function(){
             tableContent += '<tr>';
             tableContent += '<td>' + this.productId +  '</td>';
-			//tableContent += '<td>' + this.components[0].value + ' ' + this.components[0].name + '</td>';
             tableContent += '<td>' + this.workingstation + '</td>';
             tableContent += '<td><a href="#" class="linkdelete" style="text-decoration: none; "rel="' + this._id + '">&#10004;</a></td>';
             tableContent += '</tr>';
         });
 		
-        // in Tabelle schreiben
+        // write in table
         $('#Transportlist table tbody').html(tableContent);
     });
 };
 
 
-// Eintrag löschen --> Erledigt
+// delete ("Done")
 function deleteInfo(event) {
 
     event.preventDefault();
@@ -59,7 +54,7 @@ function deleteInfo(event) {
         }).done(function( response ) {
 
 		
-            //Erfolgreich gelöscht?
+            //deleted successfully?
             if (response.msg === '') {
             }
             else {
@@ -74,25 +69,3 @@ function deleteInfo(event) {
     };
 
 	
-// mehrere Tabellen in Tabs darstellen
-/*function openTable(evt, tableName) {
-    
-    var i, tabcontent, tablinks;
-
-    // "tabcontent" wird versteckt
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // bei alle elementen mit "tablinks" wird "active" entfernt 
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Aktuellen Tab anzeigen + auf "active" setzen 
-    document.getElementById(tableName).style.display = "block";
-    evt.currentTarget.className += " active";
-} 
- */
