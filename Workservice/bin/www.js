@@ -130,7 +130,7 @@ function connectToExternalTools()
         });
         toolSocket.on('data', function (data) { 
             //console.log("receiving new data from external tool '"+tool1.name+"': '"+data+"'");
-            tool.addValue("Gewicht",data);
+            tool.addValue("Gewicht in g",data);
             ios.sockets.emit('toolData', JSON.stringify(tool.getToolSummary()));//forward message to clients
             //console.log("current tools summary:");
             //console.log(JSON.stringify(tool.getToolSummary()));
