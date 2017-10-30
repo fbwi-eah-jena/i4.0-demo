@@ -1,0 +1,9 @@
+{
+    "product_db" :
+    {
+        "host" : "localhost",
+        "user" : "root",
+        "password" : "root",
+        "db" : "products_db"
+    }
+}
