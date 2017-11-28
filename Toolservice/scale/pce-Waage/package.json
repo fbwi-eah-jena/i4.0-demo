@@ -1,0 +1,10 @@
+{
+	"name": "app_toolservice",
+	"description": "External Tool Service",
+	"author": "nbrehm",
+	"dependencies": {
+		"node-hid": "^0.5.7",
+		"serialport": "^6.0.4",
+		"socket.io": "^2.0.4"
+	}
+}
