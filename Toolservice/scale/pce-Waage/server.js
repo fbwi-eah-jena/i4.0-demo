@@ -6,8 +6,8 @@ var sp = require('serialport');
 var port = new sp(conf.comPort, {parser: new sp.parsers.Readline('\r\n')});
 
 
-//connectToServer();
-scale();
+connectToServer();
+//scale();
 
 function connectToServer()
 {
