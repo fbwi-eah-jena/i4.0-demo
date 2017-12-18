@@ -7,7 +7,6 @@ var port = new sp(conf.comPort, {parser: new sp.parsers.Readline('\r\n')});
 
 
 connectToServer();
-//scale();
 
 function connectToServer()
 {
@@ -33,7 +32,7 @@ var buf='';
 var line='';
 var gewicht=0;
 
-function scale()
+function scale(socket)
 { 
 	port.on('data', function (data) 
 	{
@@ -46,12 +45,11 @@ function scale()
 			if(line.length==18)
 			{
 				console.log(gewicht);
+				socket.emit('data', gewicht);
 			}
 
 			buf='';
-			
 		}
-		
 	});
  
 	// Open errors will be emitted as an error event
