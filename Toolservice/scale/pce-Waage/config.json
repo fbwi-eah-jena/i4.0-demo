@@ -1,4 +1,4 @@
 {
 	"port": 8017,
-	"comPort": "COM4"
+	"comPort": "/dev/ttyUSB0"
 }
