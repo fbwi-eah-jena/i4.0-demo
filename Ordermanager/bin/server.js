@@ -51,7 +51,7 @@ mqttClient.on('message', (topic, message) => {
             let orderId = result.insertId;
             console.log('New order stored... OrderID is '+ orderId);
             let orderData = JSON.parse(message.toString());
-            var mapping = JSON.parse(fs.readFileSync('../product_mappings/simple_cocktails_mapping.json', 'utf8'));
+            var mapping = JSON.parse(fs.readFileSync('./product_mappings/simple_cocktails_mapping.json', 'utf8'));
             let processData = new Object;
             processData.productId = ""+orderId;
             processData.processId = mapping.processId;
