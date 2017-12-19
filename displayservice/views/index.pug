@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  div(class='container')
+    div(class='jumbotron')
+      h1(style="text-align: center;") My fancy overview
+      br
+      div(class="card")
+        - var tabledesign = ['table' , 'table-bordered' , 'table-inverse']
+        table(class=tabledesign)
+          thead
+            tr
+              th(rowspan='2') Order ID
+              th(rowspan='2') Last passed station
+              th(colspan='3') Ingredients
+              th(rowspan='2') Status
+              th(rowspan='2') Time
+            tr
+              th Juice
+              th Puree
+              th Pieces
+          tbody
+            tr 
+              td 1
+              td Juice 01
+              td Cherry Juice
+              td Puree
+              td Pieces
+              td in Progress
+              td 01.01.2017 13:33
+
+
