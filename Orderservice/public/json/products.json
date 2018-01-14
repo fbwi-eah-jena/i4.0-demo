@@ -36,6 +36,16 @@
                 {"id": 5, "name": "Raspberries"},
                 {"id": 6, "name": "Strawberry pieces"}
             ]
+        },
+        {
+            "id": 4,
+            "name": "Alcohol",
+            "options": [
+                {"id": 1, "name": "Gin"},
+                {"id": 2, "name": "Rum"},
+                {"id": 3, "name": "Vodka"},
+                {"id": 4, "name": "No alcohol"}
+            ]
         }
     ] 
 }

@@ -24,12 +24,20 @@
             ]
         },
 		{
+            "taskId" : "Alcohol",
+            "components" : 
+            [
+                {"id" : "4"}
+            ]
+        },
+		{
             "taskId" : "Hand over",
             "components" : 
             [
                 {"id" : "1"},
 				{"id" : "2"},
-				{"id" : "3"}
+				{"id" : "3"},
+				{"id" : "4"}
             ]
         }
     ]

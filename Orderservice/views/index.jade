@@ -111,6 +111,29 @@ block content
                                     img(src='images/fruit_pieces_optimized/strawberry.jpg').config-option-image
                                     br
                                     b Strawberry pieces
+                                    
+            div(id='comp4Panel').component-panel
+                .row
+                    .col-sm-3 
+                        h4 4. Alcohol
+                    .col-sm-9
+                        div(id='component_4').config-options
+                            div.config-option 
+                                    img(src='images/alcohol_optimized/gin.jpg').config-option-image
+                                    br
+                                    b Gin
+                            div.config-option 
+                                    img(src='images/alcohol_optimized/rum.jpg').config-option-image
+                                    br
+                                    b Rum
+                            div.config-option 
+                                    img(src='images/alcohol_optimized/vodka.jpg').config-option-image
+                                    br
+                                    b Vodka
+                            div.config-option 
+                                    img(src='images/alcohol_optimized/no_alcohol.jpg').config-option-image
+                                    br
+                                    b No alcohol
             
             div(id='sumbitPanel').component-panel
                 button(id='orderButton').btn.btn-success.btn-lg.btn-block Order now
@@ -121,15 +144,18 @@ block content
                 p.lead ...is almost complete. Please final check your components:
                 .container
                     .row
-                        .col-md-4
+                        .col-md-3
                             p.lead 1.
                             h3(id='finalComponent1Value') tbd
-                        .col-md-4
+                        .col-md-3
                             p.lead 2.
                             h3(id='finalComponent2Value') tbd
-                        .col-md-4
+                        .col-md-3
                             p.lead 3.
                             h3(id='finalComponent3Value') tbd
+                        .col-md-3
+                            p.lead 4.
+                            h3(id='finalComponent4Value') tbd
 
                 p
                     button(id='backSubmitButton').btn.btn-default.btn-lg.eah-button
