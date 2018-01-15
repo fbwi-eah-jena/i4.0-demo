@@ -6,7 +6,8 @@
             "taskId" : "Juice",
             "components" : 
             [
-                {"id" : "1"}
+                {"id" : "1"},
+				{"id" : "4"}
             ]
         },
         {
@@ -21,13 +22,6 @@
             "components" : 
             [
                 {"id" : "3"}
-            ]
-        },
-		{
-            "taskId" : "Alcohol",
-            "components" : 
-            [
-                {"id" : "4"}
             ]
         },
 		{
