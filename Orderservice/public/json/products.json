@@ -5,24 +5,19 @@
             "name": "Fruit juice",
             "options": [
                 {"id": 1, "name": "Orange juice"},
-                {"id": 2, "name": "Apple juice"},
-                {"id": 3, "name": "Banana juice"},
-                {"id": 4, "name": "Cherry juice"},
-                {"id": 5, "name": "Currant juice"},
-                {"id": 6, "name": "Grape juice"},
-                {"id": 7, "name": "Tomato juice"}
+                {"id": 2, "name": "Banana juice"},
+                {"id": 3, "name": "Cherry juice"},
+                {"id": 4, "name": "Tomato juice"}
             ]
         },
         {
             "id": 2,
             "name": "Fruit puree",
             "options": [
-                {"id": 1, "name": "Currant puree"},
-                {"id": 2, "name": "Kiwi puree"},
-                {"id": 3, "name": "Mango puree"},
-                {"id": 4, "name": "Peach puree"},
-                {"id": 5, "name": "Pear puree"},
-                {"id": 6, "name": "Strawberry puree"}
+                {"id": 1, "name": "Mango puree"},
+                {"id": 2, "name": "Peach puree"},
+                {"id": 3, "name": "Pear puree"},
+                {"id": 4, "name": "Strawberry puree"}
             ]
         },
         {
@@ -31,10 +26,8 @@
             "options": [
                 {"id": 1, "name": "Banana pieces"},
                 {"id": 2, "name": "Blueberries"},
-                {"id": 3, "name": "Mango pieces"},
-                {"id": 4, "name": "Pineapple pieces"},
-                {"id": 5, "name": "Raspberries"},
-                {"id": 6, "name": "Strawberry pieces"}
+                {"id": 3, "name": "Pineapple pieces"},
+                {"id": 4, "name": "Raspberries"}
             ]
         },
         {
