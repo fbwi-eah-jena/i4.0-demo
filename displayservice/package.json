@@ -10,6 +10,8 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
+    "mongodb": "^3.0.1",
+    "monk": "^6.0.5",
     "morgan": "~1.9.0",
     "mqtt": "^2.15.0",
     "npm-watch": "^0.3.0",

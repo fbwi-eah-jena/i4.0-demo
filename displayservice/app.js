@@ -1,4 +1,5 @@
 var express = require('express');
+var conf = require('./config.json');
 var mqtt = require('mqtt');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,6 +9,14 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+
+const client = mqtt.connect(conf.mqttbroker);
+
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk(conf.db);
+console.log("connected to mongo_db at: "+conf.db);
 
 var app = express();
 
@@ -46,18 +55,17 @@ app.use(function(err, req, res, next) {
 
 client.on('connect', () => {  
   console.log("connected to mqtt broker at: "+conf.mqttbroker);
-  client.subscribe('workflow/orders/#')
+  client.subscribe('workflow/#')
 })
 //write task objects to db
 client.on('message', (topic, message) => {  
     console.log("reveived a new message: "+message.toString());
 	//expected message structure: (claimedtasks: [{"id":"657373", "workingstation":"65747", "productId":"27"}],{...},{...})
 	var newMessage = JSON.parse(message);
-	for(thisTask of newMessage.claimedtasks)
-	{
-		console.log("found new claimed task.... "+JSON.stringify(thisTask));
-		db.collection('tsdatalist').insert(thisTask);
-	}
+
+console.log("found new message.... "+JSON.stringify(newMessage));
+db.collection('displaydata').insert(newMessage);
+console.log("wrote order to db.... "+JSON.stringify(newMessage.productId));
 });
 
 module.exports = app;
