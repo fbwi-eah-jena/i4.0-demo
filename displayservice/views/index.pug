@@ -1,32 +1,101 @@
 extends layout
 
+
 block content
+  script.
+    var refresh_rate = 5;
+    var last_user_action = 0;
+    var has_focus = false;
+    var lost_focus_count = 0;
+    var focus_margin = 4.5;
+
+
+    function reset() {
+        last_user_action = 0;
+        console.log("Reset");
+    }
+
+    function windowHasFocus() {
+        has_focus = true;
+    }
+
+    function windowLostFocus() {
+        has_focus = false;
+        lost_focus_count++;
+        console.log(lost_focus_count + " <~ Lost Focus");
+    }
+
+    setInterval(function () {
+        last_user_action++;
+        refreshCheck();
+    }, 1000);
+
+    function refreshCheck() {
+        var focus = window.onfocus;
+        if ((last_user_action >= refresh_rate && !has_focus && document.readyState == "complete") || lost_focus_count > focus_margin) {
+            window.location.reload();
+            reset();
+        }
+
+    }
+    window.addEventListener("focus", windowHasFocus, false);
+    window.addEventListener("blur", windowLostFocus, false);
+    window.addEventListener("click", reset, false);
+    window.addEventListener("mousemove", reset, false);
+    window.addEventListener("keypress", reset, false);
   div(class='container')
-    div(class='jumbotron')
+    div(class='jumbotron' style="padding-top: 15px; margin-top: 10px;")
       h1(style="text-align: center;") My fancy overview
+        img(src='https://image.flaticon.com/icons/svg/620/620131.svg' height="115px")
       br
       div(class="card")
-        - var tabledesign = ['table' , 'table-bordered' , 'table-inverse']
+        - var tabledesign = ['table' , 'table-bordered' , 'table-inverse', 'table-striped']
         table(class=tabledesign)
           thead
             tr
               th(rowspan='2') Order ID
               th(rowspan='2') Last passed station
-              th(colspan='3') Ingredients
+              th(colspan='4') Ingredients
               th(rowspan='2') Status
-              th(rowspan='2') Time
+              
             tr
               th Juice
               th Puree
               th Pieces
+              th Alcohol
           tbody
-            tr 
-              td 1
-              td Juice 01
-              td Cherry Juice
-              td Puree
-              td Pieces
-              td in Progress
-              td 01.01.2017 13:33
+            each order in orderList
+              tr 
+                td #{order.productId}
+                if order.juiceDone == true
+                  if order.pureeDone == true
+                    if order.piecesDone == true
+                      td Pieces
+                    else
+                      td Puree
+                  else
+                    td Juice
+                else
+                  td nothing finished yet
+                td #{order.taskData[0].components[0].options[0].name}
+                td #{order.taskData[1].components[0].options[0].name}
+                td #{order.taskData[2].components[0].options[0].name}
+                td #{order.taskData[0].components[1].options[0].name}
+                if order.juiceDone == true
+                  if order.pureeDone == true
+                    if order.piecesDone == true
+                      td
+                        img(src="https://image.flaticon.com/icons/svg/214/214353.svg" height="39px") 
+                    else
+                      td 
+                        img(src="https://image.flaticon.com/icons/svg/2/2160.svg" height="39px")
+                  else
+                    td 
+                      img(src="https://image.flaticon.com/icons/svg/2/2160.svg" height="39px")
+                else
+                  td 
+                    img(src="https://image.flaticon.com/icons/svg/2/2160.svg" height="39px")
+              
+                
 
 
