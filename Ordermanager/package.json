@@ -6,6 +6,7 @@
     "start": "node ./bin/server.js"
   },
   "dependencies": {
-    "mqtt": "~2.13.0"
+    "mqtt": "~2.13.0",
+	"mysql": "~2.13.0"
   }
 }

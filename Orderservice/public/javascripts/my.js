@@ -76,6 +76,8 @@ $(document).ready(function(){
         $('#finalComponent2Value').html(getOptionNameById(2, currentIndex2+1));
         let currentIndex3 = $('#component_3').slick('slickCurrentSlide');
         $('#finalComponent3Value').html(getOptionNameById(3, currentIndex3+1));
+        let currentIndex4 = $('#component_4').slick('slickCurrentSlide');
+        $('#finalComponent4Value').html(getOptionNameById(4, currentIndex4+1));
         
         $('#configPanel').hide();
         $('#orderPanel').fadeIn();
@@ -89,6 +91,7 @@ $(document).ready(function(){
         let currentIndex1 = $('#component_1').slick('slickCurrentSlide');
         let currentIndex2 = $('#component_2').slick('slickCurrentSlide');
         let currentIndex3 = $('#component_3').slick('slickCurrentSlide');
+        let currentIndex4 = $('#component_4').slick('slickCurrentSlide');
         lastOrderToken = gernerateToken();
         let orderJSON =`
             {   "token" : "${lastOrderToken}",
@@ -114,6 +117,13 @@ $(document).ready(function(){
                         "name": "Fruit pieces",
                         "options": [
                             {"id": "${currentIndex3+1}", "name": "${getOptionNameById(3, currentIndex3+1)}"}
+                        ]
+                    },
+                    {
+                        "id": "4",
+                        "name": "Alcohol",
+                        "options": [
+                            {"id": "${currentIndex4+1}", "name": "${getOptionNameById(4, currentIndex4+1)}"}
                         ]
                     }
                 ] 
