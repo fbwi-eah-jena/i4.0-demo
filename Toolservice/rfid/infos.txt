@@ -1,0 +1,44 @@
+RFID:
+
+Aufgabe:
+Init (die nummer aus dem mqqt broker nehmen und den becher beschreiben) //nur die Ordernummer z.b. 210
+Workservice DO (do klicken)
+
+
+
+
+install & setup:
+
+https://www.npmjs.com/package/mfrc522-rpi
+NOTE:
+Das Paket kann nur mit den Cards und Chips umgehen. Aber nicht mit den Tags(Sticker)
+deswegen muss die lib umgeschriebnen werden.
+
+The SPI master driver is disabled by default on Raspbian. 
+To enable it, use raspi-config, or ensure the line dtparam=spi=on isn't commented out in /boot/config.txt,
+and reboot. If the SPI driver was loaded, you should see the device /dev/spidev0.0
+
+sudo npm install wiringpi-node
+sudo npm install mfrc522-rpi
+
+
+
+Lib umschreiben:
+Infos zu den Ntag 213:
+https://www.nxp.com/docs/en/data-sheet/NTAG213_215_216.pdf
+
+lib für arduino. aber nicht getestet. soll aber funktionieren.
+https://github.com/miguelbalboa/rfid/
+http://makecourse.weebly.com/week10segment1.html tutorial zu der Lib
+https://www.npmjs.com/package/mfrc522-rpi
+
+
+Die 3 Dateien: index.js command.js read.js
+Sind aus dem mfrc522-rpi Modul.
+
+Read.js: beispielprogramm um UID zu lesen.
+index.js: logik
+command.js: beinhaltet viele behefele für das RFID-Modul. jedoch nicht alle
+
+
+
