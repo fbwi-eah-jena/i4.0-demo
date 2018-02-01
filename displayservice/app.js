@@ -15,6 +15,7 @@ const client = mqtt.connect(conf.mqttbroker);
 const clientJuice = mqtt.connect(conf.mqttbroker);
 const clientPuree = mqtt.connect(conf.mqttbroker);
 const clientPieces = mqtt.connect(conf.mqttbroker);
+const clientAlcohol = mqtt.connect(conf.mqttbroker);
 
 var mongo = require('mongodb');
 var monk = require('monk');
@@ -76,6 +77,12 @@ clientPieces.on('connect', () => {
   clientPieces.subscribe('workflow/complete/user/pieces')
 })
 
+clientAlcohol.on('connect', () => {  
+  console.log("connected to mqtt broker for pieces msg at: "+conf.mqttbroker);
+  clientAlcohol.subscribe('workflow/complete/user/alcohol')
+})
+
+
 
 //write task objects to db
 client.on('message', (topic, message) => {  
@@ -120,6 +127,18 @@ clientPieces.on('message', (topic, message) => {
   db.collection("displaydata").update(query, newvalue, function(err, res) {
     if (err) throw err;
     console.log("1 document updated, piecesDone for ID " + message.productId + " set to true");
+    db.close();
+  });
+});
+
+clientAlcohol.on('message', (topic, message) => {  
+  console.log("reveived a new done message from pieces: "+message.toString());
+  var message = JSON.parse(message);
+  var query = { productId: message.productId };
+  var newvalue = { $set: {alcoholDone: true} };
+  db.collection("displaydata").update(query, newvalue, function(err, res) {
+    if (err) throw err;
+    console.log("1 document updated, alcoholDone for ID " + message.productId + " set to true");
     db.close();
   });
 });

@@ -68,11 +68,14 @@ block content
               tr 
                 td #{order.productId}
                 if order.juiceDone == true
-                  if order.pureeDone == true
-                    if order.piecesDone == true
-                      td Pieces
+                  if order.alcoholDone == true
+                    if order.pureeDone == true
+                      if order.piecesDone == true
+                        td Pieces
+                      else
+                        td Puree
                     else
-                      td Puree
+                      td Alcohol
                   else
                     td Juice
                 else
@@ -80,21 +83,14 @@ block content
                 td #{order.taskData[0].components[0].options[0].name}
                 td #{order.taskData[1].components[0].options[0].name}
                 td #{order.taskData[2].components[0].options[0].name}
-                td #{order.taskData[0].components[1].options[0].name}
-                if order.juiceDone == true
-                  if order.pureeDone == true
-                    if order.piecesDone == true
-                      td
-                        img(src="https://image.flaticon.com/icons/svg/214/214353.svg" height="39px") 
-                    else
-                      td 
-                        img(src="https://image.flaticon.com/icons/svg/2/2160.svg" height="39px")
-                  else
-                    td 
-                      img(src="https://image.flaticon.com/icons/svg/2/2160.svg" height="39px")
+                td #{order.taskData[3].components[0].options[0].name}
+                if order.piecesDone == true
+                  td
+                    img(src="https://image.flaticon.com/icons/svg/214/214353.svg" height="39px") 
                 else
                   td 
                     img(src="https://image.flaticon.com/icons/svg/2/2160.svg" height="39px")
+                  
               
                 
 
