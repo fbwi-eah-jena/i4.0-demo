@@ -1,5 +1,5 @@
 {
 	"port" : 3003,
-	"mqttbroker": "mqtt:192.168.2.21",
+	"mqttbroker": "mqtt:wm.myfancydrink.lan",
 	"db" : "localhost:27017/displaydb"
 }
