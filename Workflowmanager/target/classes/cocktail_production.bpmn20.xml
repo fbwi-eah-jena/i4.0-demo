@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://activiti.org/test">
+  <collaboration id="Collaboration">
+    <participant id="my_fancy_drink" name="My fancy drink" processRef="cocktail_production"></participant>
+  </collaboration>
+  <process id="cocktail_production" name="My fancy drink" isExecutable="true">
+    <laneSet id="laneSet_cocktail_production">
+      <lane id="service" name="Service">
+        <flowNodeRef>prepare_cup</flowNodeRef>
+        <flowNodeRef>quality_check</flowNodeRef>
+        <flowNodeRef>hand_over</flowNodeRef>
+        <flowNodeRef>end</flowNodeRef>
+        <flowNodeRef>start</flowNodeRef>
+        <flowNodeRef>flow2</flowNodeRef>
+        <flowNodeRef>flow9</flowNodeRef>
+        <flowNodeRef>flow10</flowNodeRef>
+        <flowNodeRef>flow1</flowNodeRef>
+      </lane>
+      <lane id="juice_unit" name="Juice Unit">
+        <flowNodeRef>fill_in_juice</flowNodeRef>
+        <flowNodeRef>parallelgateway2</flowNodeRef>
+        <flowNodeRef>parallelgateway3</flowNodeRef>
+        <flowNodeRef>flow5</flowNodeRef>
+        <flowNodeRef>flow7</flowNodeRef>
+        <flowNodeRef>flow3</flowNodeRef>
+        <flowNodeRef>flow4</flowNodeRef>
+      </lane>
+      <lane id="fruit_unit" name="Fruit Unit">
+        <flowNodeRef>fill_in_fruits</flowNodeRef>
+        <flowNodeRef>flow6</flowNodeRef>
+      </lane>
+      <lane id="spice_unit" name="Spice Unit">
+        <flowNodeRef>fill_in_spice</flowNodeRef>
+        <flowNodeRef>flow8</flowNodeRef>
+      </lane>
+    </laneSet>
+    <userTask id="prepare_cup" name="Prepare cup task" activiti:candidateGroups="service"></userTask>
+    <userTask id="quality_check" name="Quality check" activiti:candidateGroups="service"></userTask>
+    <userTask id="hand_over" name="Hand over" activiti:candidateGroups="service"></userTask>
+    <endEvent id="end" name="End"></endEvent>
+    <startEvent id="start" name="Start"></startEvent>
+    <userTask id="fill_in_juice" name="Fill in juice" activiti:candidateGroups="juice_unit"></userTask>
+    <parallelGateway id="parallelgateway2" name="Parallel Gateway"></parallelGateway>
+    <parallelGateway id="parallelgateway3" name="Parallel Gateway"></parallelGateway>
+    <userTask id="fill_in_fruits" name="Fill in fruits" activiti:candidateGroups="fruit_unit"></userTask>
+    <userTask id="fill_in_spice" name="Fill in spice"></userTask>
+    <sequenceFlow id="flow2" sourceRef="prepare_cup" targetRef="parallelgateway3"></sequenceFlow>
+    <sequenceFlow id="flow9" sourceRef="quality_check" targetRef="hand_over"></sequenceFlow>
+    <sequenceFlow id="flow10" sourceRef="hand_over" targetRef="end"></sequenceFlow>
+    <sequenceFlow id="flow1" sourceRef="start" targetRef="prepare_cup"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="fill_in_juice" targetRef="parallelgateway2"></sequenceFlow>
+    <sequenceFlow id="flow7" sourceRef="parallelgateway2" targetRef="fill_in_spice"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="parallelgateway3" targetRef="fill_in_juice"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="parallelgateway3" targetRef="fill_in_fruits"></sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="fill_in_fruits" targetRef="parallelgateway2"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="fill_in_spice" targetRef="quality_check"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Collaboration">
+    <bpmndi:BPMNPlane bpmnElement="Collaboration" id="BPMNPlane_Collaboration">
+      <bpmndi:BPMNShape bpmnElement="my_fancy_drink" id="BPMNShape_my_fancy_drink">
+        <omgdc:Bounds height="600.0" width="951.0" x="20.0" y="306.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="service" id="BPMNShape_service">
+        <omgdc:Bounds height="150.0" width="921.0" x="50.0" y="306.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="prepare_cup" id="BPMNShape_prepare_cup">
+        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="350.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="quality_check" id="BPMNShape_quality_check">
+        <omgdc:Bounds height="55.0" width="105.0" x="590.0" y="350.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="hand_over" id="BPMNShape_hand_over">
+        <omgdc:Bounds height="55.0" width="105.0" x="750.0" y="350.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="28.0" width="28.0" x="900.0" y="360.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="360.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="juice_unit" id="BPMNShape_juice_unit">
+        <omgdc:Bounds height="150.0" width="921.0" x="50.0" y="456.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="fill_in_juice" id="BPMNShape_fill_in_juice">
+        <omgdc:Bounds height="55.0" width="105.0" x="330.0" y="536.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="parallelgateway2" id="BPMNShape_parallelgateway2">
+        <omgdc:Bounds height="40.0" width="40.0" x="510.0" y="543.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="parallelgateway3" id="BPMNShape_parallelgateway3">
+        <omgdc:Bounds height="40.0" width="40.0" x="200.0" y="543.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="fruit_unit" id="BPMNShape_fruit_unit">
+        <omgdc:Bounds height="150.0" width="921.0" x="50.0" y="606.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="fill_in_fruits" id="BPMNShape_fill_in_fruits">
+        <omgdc:Bounds height="55.0" width="105.0" x="330.0" y="650.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="spice_unit" id="BPMNShape_spice_unit">
+        <omgdc:Bounds height="150.0" width="921.0" x="50.0" y="756.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="fill_in_spice" id="BPMNShape_fill_in_spice">
+        <omgdc:Bounds height="55.0" width="105.0" x="570.0" y="810.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="239.93865030674846" y="563.0613496932515"></omgdi:waypoint>
+        <omgdi:waypoint x="330.0" y="563.3384615384615"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="247.68194070080864" y="405.0"></omgdi:waypoint>
+        <omgdi:waypoint x="222.9816513761468" y="545.9816513761468"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="435.0" y="563.3220338983051"></omgdi:waypoint>
+        <omgdi:waypoint x="510.06756756756755" y="563.0675675675676"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="855.0" y="375.8520179372197"></omgdi:waypoint>
+        <omgdi:waypoint x="900.0068922907982" y="374.43924553347273"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="228.19148936170214" y="574.8085106382979"></omgdi:waypoint>
+        <omgdi:waypoint x="297.0" y="674.0"></omgdi:waypoint>
+        <omgdi:waypoint x="330.0" y="675.3508771929825"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="129.99752127569985" y="375.2726822050127"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="376.54545454545456"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="535.0408719346049" y="577.9591280653951"></omgdi:waypoint>
+        <omgdi:waypoint x="613.2331511839709" y="810.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="435.0" y="675.7169811320755"></omgdi:waypoint>
+        <omgdi:waypoint x="515.0" y="673.0"></omgdi:waypoint>
+        <omgdi:waypoint x="527.6" y="580.6"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="695.0" y="377.5"></omgdi:waypoint>
+        <omgdi:waypoint x="750.0" y="377.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="623.695652173913" y="810.0"></omgdi:waypoint>
+        <omgdi:waypoint x="641.304347826087" y="405.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

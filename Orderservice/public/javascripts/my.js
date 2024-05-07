@@ -7,6 +7,7 @@ $(document).ready(function(){
     
     // WebSocket connection...
     socket = io.connect();
+
     socket.on('connect', function(){
         console.log('web socket connection established');
     }); 

@@ -16,6 +16,8 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.runtime.ProcessInstanceQuery;
+import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.task.Task;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -55,6 +57,10 @@ public class WorkflowEngineConnector {
 		  repositoryService = processEngine.getRepositoryService();
 		  runtimeService = processEngine.getRuntimeService();
 		  taskService = processEngine.getTaskService();
+
+		  Deployment deployment = repositoryService.createDeployment()
+		    .addClasspathResource("simple_cocktail_production.bpmn20.xml")
+		    .deploy();
 	}
 	
 	public void start(String processId)
@@ -82,7 +88,6 @@ public class WorkflowEngineConnector {
 		}
 		if(processId!=null && productId!=null)
 		{
-			log.debug("Strting process instance '"+processId+"' for productId '"+productId+"'");
 			HashMap<String, Object> variables = new HashMap<String, Object> ();
 			variables.put("productId", productId);
 			variables.put("orderData", jsonSpecification);
@@ -99,7 +104,6 @@ public class WorkflowEngineConnector {
 	
 	public TaskList listCandidateGroup(String groupId)
 	{
-		
 		TaskList tasklist = new TaskList();
 		tasklist.setGroupId(groupId);
 		log.debug("fetching tasks for group: '"+groupId+"'");

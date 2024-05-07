@@ -5,8 +5,9 @@ var conf = require('../config.json');
 var app = require('../app');
 var debug = require('debug')('app-website:server');
 var http = require('http');
-var io = require('socket.io');
-var ioClient = require('socket.io-client');
+var server = http.createServer(app);
+var io = require('socket.io')(server);
+//var ioClient = require('socket.io-client');
 
 var usermanager = require('../classes/usermanager.js');
 var toolmanager = require('../classes/toolmanager.js');
@@ -19,11 +20,14 @@ fs = require('fs');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+
+console.log('Express server listening on port ' + app.get('port'));
+
+
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
 var ios = io.listen(server);//extent server with web sockets functionality
 
 /**
@@ -115,7 +119,9 @@ function refreshTaskListLoopForClient(client)
 
 //external tool connection
 var toolmanager = new toolmanager.ToolManager();
-connectToExternalTools();
+
+//connectToExternalTools();
+
 function connectToExternalTools()
 {
     console.log("try connection to external tools...");

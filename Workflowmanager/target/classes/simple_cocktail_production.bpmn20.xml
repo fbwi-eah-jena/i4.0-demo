@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="simple_cocktail_production" name="My fancy drink" isExecutable="true">
+    <startEvent id="start"></startEvent>
+    
+    <userTask id="juice" name="Juice" activiti:candidateGroups="service"></userTask>
+    <sequenceFlow id="sid-1114D9A0-6A66-45B1-A9F6-B91F99C74567" sourceRef="start" targetRef="juice"></sequenceFlow>
+    
+    <userTask id="puree" name="Puree" activiti:candidateGroups="service"></userTask>
+    <sequenceFlow id="sid-A15B2661-A673-44A2-8828-C7271321AF04" sourceRef="juice" targetRef="puree"></sequenceFlow>
+    
+    <userTask id="pieces" name="Pieces" activiti:candidateGroups="service"></userTask>
+    <sequenceFlow id="sid-C3930043-6666-4B42-AA25-08D4FB259DDD" sourceRef="puree" targetRef="pieces"></sequenceFlow>
+    
+    <userTask id="alcohol" name="Alcohol" activiti:candidateGroups="service"></userTask>
+    <sequenceFlow id="sid-B94E7581-3493-4BD3-BBB5-C7B975962FD3" sourceRef="pieces" targetRef="alcohol"></sequenceFlow>
+
+    <userTask id="handover" name="Hand Over" activiti:candidateGroups="service"></userTask>
+    <sequenceFlow id="sid-B94E7581-3493-4BD3-BBB5-C7B975962FD3_1" sourceRef="alcohol" targetRef="handover"></sequenceFlow>
+    
+    <endEvent id="end"></endEvent>
+    <sequenceFlow id="sid-C42611B0-92D0-45E1-8BAB-8295C0657950" sourceRef="handover" targetRef="end"></sequenceFlow>
+  </process>
+</definitions>

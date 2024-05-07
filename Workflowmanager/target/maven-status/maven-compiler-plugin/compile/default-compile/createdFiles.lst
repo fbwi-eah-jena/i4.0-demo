@@ -1,0 +1,7 @@
+de\eahjena\wi\domain\Task.class
+de\eahjena\wi\workflowmanager\engineconnector\WorkflowEngineConnector.class
+de\eahjena\wi\workflowmanager\EventBusListener.class
+de\eahjena\wi\workflowmanager\App.class
+de\eahjena\wi\domain\TaskList.class
+de\eahjena\wi\domain\Component.class
+de\eahjena\wi\workflowmanager\events\EventManager.class

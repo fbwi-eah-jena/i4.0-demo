@@ -7,7 +7,8 @@ var conf = require('../config.json');
 var app = require('../app');
 var debug = require('debug')('app-orderservice:server');
 var http = require('http');
-var io = require('socket.io');
+var server = http.createServer(app);
+var io = require('socket.io')(server);
 
 /**
  * Get port from environment and store in Express.
@@ -15,12 +16,13 @@ var io = require('socket.io');
 
 var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
+console.log("Running at localhost:", port)
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+
 var ios = io.listen(server);//extent server with web sockets functionality
 
 /**
@@ -46,6 +48,7 @@ ios.sockets.on('connection', function (socket) {
 	console.log('web socket connection with client established...');
     socket.on('order', function (data) {
  		console.log('order arrived...');
+
         mqttClient.publish("order/new",data);
 	});
 });

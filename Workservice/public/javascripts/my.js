@@ -40,8 +40,9 @@ $(document).ready(function(){
             })
             ).then (function(){
         
-            // WebSocket connection...    
+            // WebSocket connection...
             socket = io.connect();
+
             socket.on('connect', function(){
                 //register userName for current connection
                 console.log('web socket connection established... ');
